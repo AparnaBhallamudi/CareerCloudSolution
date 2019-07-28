@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CareerCloudContext.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="EFGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CareerCloud.DataAccessLayer\CareerCloud.DataAccessLayer.csproj">
+      <Project>{2DB80F45-1A6D-4854-8349-1DB38696B31B}</Project>
+      <Name>CareerCloud.DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CareerCloud.Pocos\CareerCloud.Pocos.csproj">
       <Project>{7B038019-45EA-4D54-9412-768D5CE86217}</Project>
       <Name>CareerCloud.Pocos</Name>

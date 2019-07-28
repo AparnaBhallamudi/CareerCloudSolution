@@ -17,6 +17,11 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
         DbSet<ApplicantEducationPoco> ApplicantEducations { get; set; }
         DbSet<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
         DbSet<ApplicantProfilePoco> ApplicantProfiles { get; set; }
