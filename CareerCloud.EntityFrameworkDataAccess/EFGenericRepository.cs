@@ -49,7 +49,8 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         public T GetSingle(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<T> dbQuery = _context.Set<T>();
+            return dbQuery.Where(where).FirstOrDefault();
         }
 
         public void Remove(params T[] items)

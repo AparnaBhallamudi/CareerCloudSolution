@@ -19,6 +19,26 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
+            modelBuilder.Entity<ApplicantProfilePoco>().HasMany(c => c.ApplicantEducations).WithRequired(d => d.ApplicantProfiles).HasForeignKey(d => d.Applicant).WillCascadeOnDelete(true);
+            modelBuilder.Entity<ApplicantProfilePoco>().HasMany(c => c.ApplicantJobApplications).WithRequired(d => d.ApplicantProfiles).HasForeignKey(d => d.Applicant).WillCascadeOnDelete(true);
+            modelBuilder.Entity<ApplicantProfilePoco>().HasMany(c => c.ApplicantResumes).WithRequired(d => d.ApplicantProfiles).HasForeignKey(d => d.Applicant).WillCascadeOnDelete(true);
+            modelBuilder.Entity<ApplicantProfilePoco>().HasMany(c => c.ApplicantSkills).WithRequired(d => d.ApplicantProfiles).HasForeignKey(d => d.Applicant).WillCascadeOnDelete(true);
+            modelBuilder.Entity<ApplicantProfilePoco>().HasMany(c => c.ApplicantWorkHistory).WithRequired(d => d.ApplicantProfiles).HasForeignKey(d => d.Applicant).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyJobPoco>().HasMany(c => c.CompanyJobDescriptions).WithRequired(d => d.CompanyJobs).HasForeignKey(d => d.Job).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyJobPoco>().HasMany(c => c.CompanyJobEducations).WithRequired(d => d.CompanyJobs).HasForeignKey(d => d.Job).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyJobPoco>().HasMany(c => c.CompanyJobSkills).WithRequired(d => d.CompanyJobs).HasForeignKey(d => d.Job).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyJobPoco>().HasMany(c => c.ApplicantJobApplications).WithRequired(d => d.CompanyJobs).HasForeignKey(d => d.Job).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyProfilePoco>().HasMany(c => c.CompanyDescriptions).WithRequired(d => d.CompanyProfiles).HasForeignKey(d => d.Company).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyProfilePoco>().HasMany(c => c.CompanyJobs).WithRequired(d => d.CompanyProfiles).HasForeignKey(d => d.Company).WillCascadeOnDelete(true);
+            modelBuilder.Entity<CompanyProfilePoco>().HasMany(c => c.CompanyLocations).WithRequired(d => d.CompanyProfiles).HasForeignKey(d => d.Company).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SecurityLoginPoco>().HasMany(c => c.ApplicantProfiles).WithRequired(d => d.SecurityLogins).HasForeignKey(d => d.Login).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SecurityLoginPoco>().HasMany(c => c.SecurityLoginsLogs).WithRequired(d => d.SecurityLogins).HasForeignKey(d => d.Login).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SecurityLoginPoco>().HasMany(c => c.SecurityLoginsRoles).WithRequired(d => d.SecurityLogins).HasForeignKey(d => d.Login).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SecurityRolePoco>().HasMany(c => c.SecurityLoginsRoles).WithRequired(d => d.SecurityRoles).HasForeignKey(d => d.Role).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SystemCountryCodePoco>().HasMany(c => c.ApplicantWorkHistory).WithRequired(d => d.SystemCountryCodes).HasForeignKey(d => d.CountryCode).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SystemCountryCodePoco>().HasMany(c => c.ApplicantProfiles).WithRequired(d => d.SystemCountryCodes).HasForeignKey(d => d.Country).WillCascadeOnDelete(true);
+            modelBuilder.Entity<SystemLanguageCodePoco>().HasMany(c => c.CompanyDescriptions).WithRequired(d => d.SystemLanguageCodes).HasForeignKey(d => d.LanguageId).WillCascadeOnDelete(true);
             base.OnModelCreating(modelBuilder);
         }
 
