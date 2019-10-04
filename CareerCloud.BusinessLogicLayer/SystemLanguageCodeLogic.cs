@@ -10,34 +10,35 @@ namespace CareerCloud.BusinessLogicLayer
 {
     public class SystemLanguageCodeLogic
     {
-        
+        protected IDataRepository<SystemLanguageCodePoco> _repository;
         public SystemLanguageCodeLogic(IDataRepository<SystemLanguageCodePoco> repository)
         {
+            _repository = repository;
         }
 
 
         public void Add(SystemLanguageCodePoco[] pocos)
         {
             Verify(pocos);
-            Add(pocos);
+            _repository.Add(pocos);
         }
 
         public void Update(SystemLanguageCodePoco[] pocos)
         {
             Verify(pocos);
-            Update(pocos);
+            _repository.Update(pocos);
         }
         public void Delete(SystemLanguageCodePoco[] pocos)
         {
-            Delete(pocos);
+            _repository.Remove(pocos);
         }
-        public void GetAll(SystemLanguageCodePoco[] pocos)
+        public virtual List<SystemLanguageCodePoco> GetAll()
         {
-            GetAll(pocos);
+            return _repository.GetAll().ToList();
         }
-        public void Get(SystemLanguageCodePoco[] pocos)
+        public virtual SystemLanguageCodePoco Get(string LanguageID)
         {
-            Get(pocos);
+            return _repository.GetSingle(c => c.LanguageID == LanguageID);
         }
 
         protected void Verify(SystemLanguageCodePoco[] pocos)

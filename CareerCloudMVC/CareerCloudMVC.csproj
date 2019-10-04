@@ -282,6 +282,9 @@
     <Content Include="Views\SystemLanguageCode\Details.cshtml" />
     <Content Include="Views\SystemLanguageCode\Edit.cshtml" />
     <Content Include="Views\SystemLanguageCode\Index.cshtml" />
+    <Content Include="Views\CompanyProfile\_CompanyLocations.cshtml" />
+    <Content Include="Views\CompanyProfile\_CompanyDescriptions.cshtml" />
+    <Content Include="Views\CompanyProfile\_CompanyJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

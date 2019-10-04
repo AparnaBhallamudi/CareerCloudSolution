@@ -34,13 +34,20 @@ namespace CareerCloud.BusinessLogicLayer
 
             foreach (var poco in pocos)
             {
+                
+                 
+                 
                 if (string.IsNullOrEmpty(poco.CompanyWebsite))
                 {
                     exceptions.Add(new ValidationException(600, $"Company Website for {poco.Id} cannot be null"));
                 }
-                else if ((poco.CompanyWebsite != @".com" ) | (poco.CompanyWebsite != @".ca") | (poco.CompanyWebsite != @".biz"))
+                else
                 {
-                    exceptions.Add(new ValidationException(600, $"Invalid Website for {poco.Id}"));
+                    string[] websiteName = poco.CompanyWebsite.Split('.');
+                    if ((websiteName[2] != "com") && (websiteName[2] != "ca") && (websiteName[2] != "biz"))
+                    {
+                        exceptions.Add(new ValidationException(600, $"Invalid Website for {poco.Id}"));
+                    }
                 }
                 if (string.IsNullOrEmpty(poco.ContactPhone))
                 {

@@ -12,9 +12,9 @@ namespace CareerCloud.EntityFrameworkDataAccess
     public class CareerCloudContext : DbContext
     {
 
-        public CareerCloudContext() : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
+        public CareerCloudContext(bool createProxy = true) : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
         {
-
+            Configuration.ProxyCreationEnabled = createProxy;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
